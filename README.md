@@ -4,7 +4,7 @@ A quick exploration of methods for conveying “heaviness” in virtual reality
 Read more in our Medium article [here](https://medium.com/@B__REEL/d161e87990b).
 
 ## Precompiled binaries
-Download precompiled binaries from the [releases](releases) pages.
+Download precompiled binaries from the [releases](https://github.com/B-Reel/vr-weight/releases) pages.
 
 ## How to run
 You'll need [Unity v5.4.~](https://unity3d.com/unity/beta) and an HTC Vive.
