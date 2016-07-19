@@ -1,0 +1,137 @@
+fileFormatVersion: 2
+guid: 519d6d332d3f34acb9ab0be2103000e5
+timeCreated: 1467411633
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Cube
+    100002: Cube_2
+    100004: Dumbbell
+    100006: //RootNode
+    100008: Floor
+    100010: Flower
+    100012: Handle
+    100014: Mid_size
+    100016: Narrow_Pedestals
+    100018: Pedestal
+    100020: Pedestal_1
+    100022: Pedestal_2
+    100024: Pedestal_2_2
+    100026: Shelf_Pedestal
+    100028: Subdivision_Surface
+    100030: Subdivision_Surface_1
+    100032: Subdivision_Surface_2
+    100034: Subdivision_Surface_3
+    400000: Cube
+    400002: Cube_2
+    400004: Dumbbell
+    400006: //RootNode
+    400008: Floor
+    400010: Flower
+    400012: Handle
+    400014: Mid_size
+    400016: Narrow_Pedestals
+    400018: Pedestal
+    400020: Pedestal_1
+    400022: Pedestal_2
+    400024: Pedestal_2_2
+    400026: Shelf_Pedestal
+    400028: Subdivision_Surface
+    400030: Subdivision_Surface_1
+    400032: Subdivision_Surface_2
+    400034: Subdivision_Surface_3
+    2300000: Cube
+    2300002: Cube_2
+    2300004: Floor
+    2300006: Flower
+    2300008: Handle
+    2300010: Pedestal
+    2300012: Pedestal_1
+    2300014: Pedestal_2
+    2300016: Pedestal_2_2
+    2300018: Shelf_Pedestal
+    3300000: Cube
+    3300002: Cube_2
+    3300004: Floor
+    3300006: Flower
+    3300008: Handle
+    3300010: Pedestal
+    3300012: Pedestal_1
+    3300014: Pedestal_2
+    3300016: Pedestal_2_2
+    3300018: Shelf_Pedestal
+    4300000: Shelf_Pedestal
+    4300002: Floor
+    4300004: Pedestal
+    4300006: Pedestal_2
+    4300008: Pedestal_1
+    4300010: Handle
+    4300012: Flower
+    4300014: Cube
+    4300016: Cube_2
+    4300018: Pedestal_2_2
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
