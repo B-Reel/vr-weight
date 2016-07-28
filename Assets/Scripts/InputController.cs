@@ -59,6 +59,7 @@ namespace VRToolkit
             var tipCollider = controller.gameObject.AddComponent<SphereCollider>();
             tipCollider.radius = 0.05f;
             tipCollider.center += new Vector3(0, -0.045f, 0.01f);
+            
 
             // Interaction radius
             var interactionCollider = controller.gameObject.AddComponent<SphereCollider>();
@@ -84,11 +85,25 @@ namespace VRToolkit
         {
             if (lockedControllers.Contains(controller))
                 lockedControllers.Remove(controller);
+
+            // Re-enable colisions that would push objects
+            Debug.Log("Controller Unlocked!");
+            foreach (Collider collider in controller.GetComponents<Collider>())
+            {
+                if (!collider.isTrigger) collider.enabled = true;
+            }
         }
 
         public bool Lock(SteamVR_TrackedObject controller)
         {
             if (lockedControllers.Contains(controller)) return false; // Can't lock!
+
+            // Disable colisions that would push objects
+            Debug.Log("Controller Locked!");
+            foreach (Collider collider in controller.GetComponents<Collider>())
+            {
+                if (!collider.isTrigger) collider.enabled = false;
+            }
 
             lockedControllers.Add(controller);
             return true;

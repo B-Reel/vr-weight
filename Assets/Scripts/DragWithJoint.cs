@@ -69,17 +69,24 @@ namespace VRToolkit
 
             // Attach
             currentController = controller;
-            var joint = currentController.gameObject.AddComponent<ConfigurableJoint>();
+            var joint = gameObject.AddComponent<ConfigurableJoint>();
             joint.xMotion = ConfigurableJointMotion.Locked;
             joint.yMotion = ConfigurableJointMotion.Locked;
             joint.zMotion = ConfigurableJointMotion.Locked;
             joint.angularXMotion = ConfigurableJointMotion.Locked;
             joint.angularYMotion = ConfigurableJointMotion.Locked;
             joint.angularZMotion = ConfigurableJointMotion.Locked;
-            joint.connectedBody = this.GetComponent<Rigidbody>();
+            joint.connectedBody = currentController.GetComponent<Rigidbody>();
             joint.breakForce = breakForce;
             
             currentJoint = joint;
+        }
+
+        void OnJointBreak(float breakForce)
+        {
+            currentJoint = null;
+            if (currentController != null)
+                EndInteraction(currentController);
         }
 
         /**
