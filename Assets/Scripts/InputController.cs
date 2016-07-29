@@ -85,25 +85,11 @@ namespace VRToolkit
         {
             if (lockedControllers.Contains(controller))
                 lockedControllers.Remove(controller);
-
-            // Re-enable colisions that would push objects
-            Debug.Log("Controller Unlocked!");
-            foreach (Collider collider in controller.GetComponents<Collider>())
-            {
-                if (!collider.isTrigger) collider.enabled = true;
-            }
         }
 
         public bool Lock(SteamVR_TrackedObject controller)
         {
             if (lockedControllers.Contains(controller)) return false; // Can't lock!
-
-            // Disable colisions that would push objects
-            Debug.Log("Controller Locked!");
-            foreach (Collider collider in controller.GetComponents<Collider>())
-            {
-                if (!collider.isTrigger) collider.enabled = false;
-            }
 
             lockedControllers.Add(controller);
             return true;

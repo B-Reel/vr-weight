@@ -67,6 +67,18 @@ namespace VRToolkit
             // Try to acquire a lock for this controller
             if (!InputController.Instance.Lock(controller)) return; // Stop if someone already has it
 
+
+            // Disable colisions that would push this object
+            foreach (Collider collider in controller.GetComponents<Collider>())
+            {
+                if (collider.isTrigger) continue;
+                foreach (Collider objectCollider in GetComponents<Collider>())
+                {
+                    Debug.Log("Collision disabled" + collider + " " + objectCollider);
+                    Physics.IgnoreCollision(collider, objectCollider, true);
+                }
+            }
+
             // Attach
             currentController = controller;
             var joint = gameObject.AddComponent<ConfigurableJoint>();
@@ -99,6 +111,16 @@ namespace VRToolkit
             if (controller != currentController)
                 return;
             InputController.Instance.Release(controller);
+
+            // Re-enable colisions that would push this object
+            foreach (Collider collider in controller.GetComponents<Collider>())
+            {
+                if (collider.isTrigger) continue;
+                foreach (Collider objectCollider in GetComponents<Collider>())
+                {
+                    Physics.IgnoreCollision(collider, objectCollider, false);
+                }
+            }
 
             var device = SteamVR_Controller.Input((int)currentController.index);
 

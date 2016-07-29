@@ -31,3 +31,4 @@ sysinfo.txt
 
 # Test scenes
 /Assets/Scenes/_*.unity
+/Assets/Scenes/_*.unity.meta

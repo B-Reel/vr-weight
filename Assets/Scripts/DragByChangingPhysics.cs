@@ -46,6 +46,7 @@ namespace VRToolkit {
         public bool hideControllerOnSnap;
         public float attachTimer = 1.5f;
         public float attachWork = 1f;
+        public float breakForce = float.PositiveInfinity;
 
         /**
          * Internal variables
@@ -171,14 +172,28 @@ namespace VRToolkit {
                         // Re enable colliders
                         foreach (var collider in GetComponents<Collider>()) collider.enabled = true;
 
-                        var joint = trackedController.gameObject.AddComponent<ConfigurableJoint>();
+                        // Disable colisions that would push this object and break the joint
+                        foreach (Collider collider in trackedController.GetComponents<Collider>())
+                        {
+                            if (collider.isTrigger) continue;
+                            foreach (Collider objectCollider in GetComponents<Collider>())
+                            {
+                                Physics.IgnoreCollision(collider, objectCollider, true);
+                            }
+                        }
+
+                        var joint = gameObject.AddComponent<ConfigurableJoint>();
                         joint.xMotion = ConfigurableJointMotion.Locked;
                         joint.yMotion = ConfigurableJointMotion.Locked;
                         joint.zMotion = ConfigurableJointMotion.Locked;
                         joint.angularXMotion = ConfigurableJointMotion.Locked;
                         joint.angularYMotion = ConfigurableJointMotion.Locked;
                         joint.angularZMotion = ConfigurableJointMotion.Locked;
-                        joint.connectedBody = GetComponent<Rigidbody>();
+                        joint.connectedBody = trackedController.GetComponent<Rigidbody>();
+                        joint.breakForce = breakForce;
+
+                        rigidBody.velocity = new Vector3();
+                        rigidBody.angularVelocity = new Vector3();
 
                         currentJoint = joint;
                     }
@@ -255,6 +270,13 @@ namespace VRToolkit {
             ResetOriginalMaterial();
         }
 
+        void OnJointBreak(float breakForce)
+        {
+            currentJoint = null;
+            if (trackedController != null)
+                EndInteraction(trackedController);
+        }
+
         /**
          * Pick up object when you press the trigger close to it
          * */
@@ -316,6 +338,16 @@ namespace VRToolkit {
             // Remove it manually from the list because a collider might be disabled
             if (currentControllers.Contains(trackedController))
                 currentControllers.Remove(trackedController);
+
+            // Re-enable colisions that would push this object
+            foreach (Collider collider in controller.GetComponents<Collider>())
+            {
+                if (collider.isTrigger) continue;
+                foreach (Collider objectCollider in GetComponents<Collider>())
+                {
+                    Physics.IgnoreCollision(collider, objectCollider, false);
+                }
+            }
 
             var device = SteamVR_Controller.Input((int)trackedController.index);
 
